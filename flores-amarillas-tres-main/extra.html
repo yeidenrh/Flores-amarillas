@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/extra.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="img/flowers.png" type="image/x-icon">
+  <title>Galería de recuerdos</title>
+  <style>
+    /* Fondo degradado bonito */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* degradado romántico */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* --- Si prefieres una imagen de fondo ---
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url("img/fondo.jpg") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    ------------------------------------------ */
+
+    /* Texto arriba */
+    .gallery-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 40px 20px 20px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+
+    /* Galería responsive */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 fotos por fila en PC */
+      gap: 20px;
+      max-width: 1000px;
+      width: 100%;
+      margin: 20px auto 50px;
+      padding: 0 15px;
+    }
+
+    .card {
+      width: 100%;
+      aspect-ratio: 3 / 2; /* mantiene proporción */
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+      transform: rotateY(180deg);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* Ajuste para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: 1fr; /* una foto por fila */
+      }
+      .gallery-title {
+        font-size: 1.5rem; /* título más pequeño en cel */
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="container">
+
+  <!-- Texto arriba -->
+  <h1 class="gallery-title">Eres super increible ❤</h1>
+
+  <!-- Galería de fotos -->
+  <div class="gallery">
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="img/img1.jpg" alt="1">
+        </div>
+        <div class="card-back">Eres la mejor persona que pude haber conocido en esta vida</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="img/img2.jpg" alt="2">
+        </div>
+        <div class="card-back">Aunque no lo creas para mi eres perfecta, increíble, asombrosa</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="img/img3.jpg" alt="3">
+        </div>
+        <div class="card-back">Y no quiero presionarte con lo de la oportunidad</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="img/img4.jpg" alt="4">
+        </div>
+        <div class="card-back">Solo quiero que disfrutes las cosas que hago por ti</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="anim.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
